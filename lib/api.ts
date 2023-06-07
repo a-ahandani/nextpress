@@ -1,4 +1,5 @@
 const API_URL = process.env.WORDPRESS_API_URL;
+import { NODE } from "./queries";
 
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
   const headers = { "Content-Type": "application/json" };
@@ -57,6 +58,20 @@ export async function getAllPostsWithSlug() {
     }
   `);
   return data?.posts;
+}
+
+export async function getAllPagesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      pages(last: 1000) {
+        nodes {
+          id
+          slug
+        }
+      }
+    }
+  `);
+  return data?.pages?.nodes;
 }
 
 export async function getAllPostsForHome(preview) {
@@ -209,4 +224,31 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   if (data.posts.edges.length > 2) data.posts.edges.pop();
 
   return data;
+}
+
+export async function getNode({ uri }) {
+  const data = await fetchAPI(
+    `query {
+      nodeByUri(uri: "${uri}") {
+        id
+        uri
+        ... on Page {
+          title
+          content
+          slug
+          author {
+            node {
+              name
+              firstName
+              lastName
+              avatar {
+                url
+              }
+            }
+          }
+        }
+      }
+    }`
+  );
+  return data?.nodeByUri;
 }

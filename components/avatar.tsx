@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Avatar({ author }) {
   const isAuthorHaveFullName =
@@ -10,12 +11,14 @@ export default function Avatar({ author }) {
   return (
     <div className="flex items-center">
       <div className="w-12 h-12 relative mr-4">
-        <Image
-          src={author.node.avatar.url}
-          layout="fill"
-          className="rounded-full"
-          alt={name}
-        />
+        <Link href={"/pages/about"}>
+          <Image
+            src={author.node.avatar.url}
+            layout="fill"
+            className="rounded-full"
+            alt={name}
+          />
+        </Link>
       </div>
       {/* <div className="text-xl font-sans">{name}</div> */}
     </div>

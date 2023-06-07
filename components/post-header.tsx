@@ -24,11 +24,11 @@ export default function PostHeader({
       )}
       <div className="max-w-4xl mx-auto">
         <div className="block md:hidden mb-6">
-          <Avatar author={author} />
+          {/* <Avatar author={author} /> */}
         </div>
         <div className="mb-6 text-lg">
-          Posted <Date dateString={date} />
-          <Categories categories={categories} />
+          {/* Posted <Date dateString={date} /> */}
+          {/* <Categories categories={categories} /> */}
         </div>
       </div>
     </>
