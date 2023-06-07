@@ -1,6 +1,6 @@
 export default function Tags({ tags }) {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto overflow-hidden">
       <p className="mt-8 text-lg font-bold">
         Tagged
         {tags.edges.map((tag, index) => (
