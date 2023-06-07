@@ -3,8 +3,8 @@ import { AppProps } from 'next/app'
 import '../styles/index.css'
 
 
-function MyApp({ Component, pageProps }: AppProps) {
+function Blog({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default Blog
