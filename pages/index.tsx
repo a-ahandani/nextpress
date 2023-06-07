@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Container from '@/components/container'
 import MoreStories from '@/components/more-stories'
-import Intro from '@/components/intro'
+import Header from '@/components/header'
 import Layout from '@/components/layout'
 import { getAllPostsForHome } from '@/lib/api'
 import { CMS_NAME } from '@/lib/constants'
@@ -14,7 +14,7 @@ export default function Index({ allPosts, allPosts: { edges }, preview }) {
   return (
     <Layout preview={preview}>
       <Container>
-        <Intro />
+        <Header />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
