@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 
+
 export const COMMENT = gql`
   fragment Comment on Comment {
     id
@@ -142,7 +143,7 @@ export const NODE = gql`
     title
     uri
     content
-    excerpt
+    slug
     date
     commentStatus
     featuredImage {

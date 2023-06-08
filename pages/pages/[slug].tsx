@@ -14,7 +14,6 @@ import { getAllPagesWithSlug, getNode } from "@/lib/api";
 export default function Page({ post, posts, preview }) {
   const router = useRouter();
   const morePosts = posts?.edges;
-  console.log({ post });
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
