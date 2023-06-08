@@ -3,11 +3,10 @@ const gtm = process.env.GA_MEASUREMENT_ID
 
 export default function Container({ children }) {
 
-
   return <div className="container mx-auto px-5">
 
     <Script
-      src={"https://www.googletagmanager.com/gtag/js?id=" + gtm}
+      src={`https://www.googletagmanager.com/gtag/js?id=${gtm}`}
       strategy="afterInteractive"
     />
     <Script id="google-analytics" strategy="afterInteractive">

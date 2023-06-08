@@ -5,7 +5,7 @@ import Header from "@/components/header";
 import Layout from "@/components/layout";
 import { getAllPostsForHome } from "@/lib/api";
 
-export default function Index({ allPosts, allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, preview }) {
   const morePosts = edges;
   return (
     <Layout preview={preview}>
