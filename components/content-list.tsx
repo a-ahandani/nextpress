@@ -1,7 +1,6 @@
 import ContentPreview from "@/components/content-preview";
 
 export default function ContentList({ posts, label }) {
-
   return (
     <section>
       <h2 className="font-serif mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
@@ -12,7 +11,6 @@ export default function ContentList({ posts, label }) {
           <ContentPreview
             key={node.slug}
             title={node.title}
-            coverImage={node.featuredImage}
             date={node.date}
             author={node.author}
             slug={node.uri}
