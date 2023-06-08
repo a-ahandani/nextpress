@@ -3,7 +3,7 @@ const gtm = process.env.GA_MEASUREMENT_ID
 
 export default function Container({ children }) {
 
-  return <div className="container mx-auto px-5">
+  return <div className="container mx-auto max-w-5xl px-5">
 
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${gtm}`}

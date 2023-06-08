@@ -29,7 +29,9 @@ export default function ContentHeader({
           <Avatar author={author} />
         </div>
         <div className="mb-6 text-lg">
-          <Date dateString={date} />
+          <div className=" mb-8">
+            <Date dateString={date} />
+          </div>
           {categories && <Categories categories={categories} />}
           {tags.length > 0 && <Tags tags={tags} />}
 
