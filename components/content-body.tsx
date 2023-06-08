@@ -1,6 +1,6 @@
-import styles from "./post-body.module.css";
+import styles from "./content-body.module.css";
 
-export default function PostBody({ content }) {
+export default function ContentBody({ content }) {
   return (
     <div className="font-sans max-w-4xl mx-auto">
       <div

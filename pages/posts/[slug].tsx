@@ -3,17 +3,17 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "@/components/container";
-import PostBody from "@/components/post-body";
+import ContentBody from "@/components/content-body";
 import Header from "@/components/header";
-import PostHeader from "@/components/post-header";
+import ContentHeader from "@/components/content-header";
 import Layout from "@/components/layout";
-import PostTitle from "@/components/post-title";
+import ContentTitle from "@/components/content-title";
 import Tags from "@/components/tags";
 import { getAllPostsWithSlug, getNode } from "@/lib/api";
 
-export default function Post({ post, posts, preview }) {
+export default function Post({ post, preview }) {
   const router = useRouter();
-  const morePosts = posts?.edges;
+  console.log({ post })
 
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />;
@@ -24,7 +24,7 @@ export default function Post({ post, posts, preview }) {
       <Container>
         <Header />
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <ContentTitle>Loading…</ContentTitle>
         ) : (
           <>
             <article>
@@ -35,14 +35,14 @@ export default function Post({ post, posts, preview }) {
                   content={post.featuredImage?.node.mediaItemUrl}
                 />
               </Head>
-              <PostHeader
+              <ContentHeader
                 title={post.title}
                 coverImage={post.featuredImage}
                 date={post.date}
                 author={post.author}
                 categories={post.categories}
               />
-              <PostBody content={post.content} />
+              <ContentBody content={post.content} />
               <footer>
                 {post.tags.nodes.length > 0 && <Tags tags={post.tags} />}
               </footer>

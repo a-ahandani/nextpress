@@ -1,10 +1,10 @@
 import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
-import PostTitle from "./post-title";
+import PostTitle from "./content-title";
 import Categories from "./categories";
 
-export default function PostHeader({
+export default function ContentHeader({
   title,
   coverImage,
   date,
@@ -24,11 +24,11 @@ export default function PostHeader({
       )}
       <div className="max-w-4xl mx-auto">
         <div className="block md:hidden mb-6">
-          {/* <Avatar author={author} /> */}
+          <Avatar author={author} />
         </div>
         <div className="mb-6 text-lg">
-          {/* Posted <Date dateString={date} /> */}
-          {/* <Categories categories={categories} /> */}
+          <Date dateString={date} />
+          {categories && <Categories categories={categories} />}
         </div>
       </div>
     </>
