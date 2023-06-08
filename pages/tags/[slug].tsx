@@ -3,21 +3,19 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "@/components/container";
-import ContentBody from "@/components/content-body";
+import ContentList from "@/components/content-list";
 import Header from "@/components/header";
-import ContentHeader from "@/components/content-header";
 import Layout from "@/components/layout";
 import ContentTitle from "@/components/content-title";
-import Tags from "@/components/tags";
-import { getAllPostsWithSlug, getNode } from "@/lib/api";
+import { getAllTagsWithSlug, getNode } from "@/lib/api";
 
-export default function Post({ post, preview }) {
+export default function Page({ content, preview }) {
   const router = useRouter();
 
-  if (!router.isFallback && !post?.id) {
+  if (!router.isFallback && !content?.name) {
     return <ErrorPage statusCode={404} />;
   }
-
+  const label = `${content?.__typename}: ${content?.name}`
   return (
     <Layout preview={preview}>
       <Container>
@@ -28,23 +26,15 @@ export default function Post({ post, preview }) {
           <>
             <article>
               <Head>
-                <title>{`${post.title} | Ahandani.com`}</title>
+                <title>{`${label} | Ahandani.com`}</title>
                 <meta
                   property="og:image"
-                  content={post.featuredImage?.node.mediaItemUrl}
+                  content={content.featuredImage?.node.sourceUrl}
                 />
               </Head>
-              <ContentHeader
-                title={post.title}
-                coverImage={post.featuredImage}
-                date={post.date}
-                author={post.author}
-                categories={post.categories}
-                tags={post.tags?.nodes}
-              />
-              <ContentBody content={post.content} />
-              <footer>
-              </footer>
+
+              {content.posts?.nodes?.length > 0 && <ContentList label={label} posts={content.posts?.nodes} />}
+
             </article>
           </>
         )}
@@ -55,24 +45,20 @@ export default function Post({ post, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({
   params,
-  preview = false,
 }) => {
-  const data = await getNode({ uri: params?.slug });
+  const data = await getNode({ uri: `tag/${params?.slug}` });
   return {
     props: {
-      preview,
-      post: data,
+      content: data,
     },
     revalidate: 10,
   };
 };
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug();
-
+  const allTags = await getAllTagsWithSlug();
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allTags.map(({ slug }) => `/tags/${slug}`) || [],
     fallback: true,
   };
 };

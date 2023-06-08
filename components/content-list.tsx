@@ -1,20 +1,21 @@
 import ContentPreview from "@/components/content-preview";
 
-export default function ContentList({ posts }) {
+export default function ContentList({ posts, label }) {
+
   return (
     <section>
       <h2 className="font-serif mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-        Posts
+        {label}
       </h2>
       <div className="grid grid-cols-1  md:gap-x-16 lg:gap-x-32 gap-y-10  mb-32">
-        {posts.map(({ node }) => (
+        {posts.map((node) => (
           <ContentPreview
             key={node.slug}
             title={node.title}
             coverImage={node.featuredImage}
             date={node.date}
             author={node.author}
-            slug={node.slug}
+            slug={node.uri}
             excerpt={node.excerpt}
           />
         ))}
@@ -22,4 +23,3 @@ export default function ContentList({ posts }) {
     </section>
   );
 }
-

@@ -136,3 +136,19 @@ export async function getAllPostsWithSlug() {
   `);
   return data?.posts;
 }
+
+export async function getAllTagsWithSlug() {
+  const data = await fetchAPI(`
+    {
+      tags(first: 10000) {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
+    }
+  `);
+  return data?.tags?.edges;
+}
