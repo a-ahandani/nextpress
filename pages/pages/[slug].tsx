@@ -40,6 +40,7 @@ export default function Page({ content, preview }) {
                 date={content.date}
                 author={content.author}
                 categories={content.categories}
+                tags={[]}
               />
               <ContentBody content={content.content} />
               <footer>
