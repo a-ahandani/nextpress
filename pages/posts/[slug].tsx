@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
+import Avatar from "@/components/avatar";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "@/components/container";
 import ContentBody from "@/components/content-body";
@@ -42,7 +43,13 @@ export default function Post({ post, preview }) {
                 tags={post.tags?.nodes}
               />
               <ContentBody content={post.content} />
-              <footer></footer>
+              <footer className="flex justify-center">
+                {post?.author?.node && (
+                  <div className="">
+                    <Avatar author={post?.author} />
+                  </div>
+                )}
+              </footer>
             </article>
           </>
         )}
