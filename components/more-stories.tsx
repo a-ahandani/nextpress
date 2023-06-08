@@ -11,9 +11,8 @@ export default function ContentList({ posts }) {
           <ContentPreview
             key={node.slug}
             title={node.title}
-            coverImage={node.featuredImage}
             date={node.date}
-            author={node.author}
+            author={undefined}
             slug={node.slug}
             excerpt={node.excerpt}
           />
@@ -22,4 +21,3 @@ export default function ContentList({ posts }) {
     </section>
   );
 }
-
