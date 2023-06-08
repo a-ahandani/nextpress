@@ -8,7 +8,6 @@ import Header from "@/components/header";
 import ContentHeader from "@/components/content-header";
 import Layout from "@/components/layout";
 import ContentTitle from "@/components/content-title";
-import Tags from "@/components/tags";
 import { getAllPostsWithSlug, getNode } from "@/lib/api";
 
 export default function Post({ post, preview }) {
@@ -43,8 +42,7 @@ export default function Post({ post, preview }) {
                 tags={post.tags?.nodes}
               />
               <ContentBody content={post.content} />
-              <footer>
-              </footer>
+              <footer></footer>
             </article>
           </>
         )}
@@ -66,7 +64,6 @@ export const getStaticProps: GetStaticProps = async ({
     revalidate: 10,
   };
 };
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPostsWithSlug();

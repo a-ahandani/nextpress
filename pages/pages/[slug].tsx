@@ -44,7 +44,9 @@ export default function Page({ content, preview }) {
               />
               <ContentBody content={content.content} />
               <footer>
-                {content?.tags?.edges.length > 0 && <Tags tags={content.tags} />}
+                {content?.tags?.edges.length > 0 && (
+                  <Tags tags={content.tags} />
+                )}
               </footer>
             </article>
           </>
@@ -54,9 +56,7 @@ export default function Page({ content, preview }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const data = await getNode({ uri: params?.slug });
   return {
     props: {

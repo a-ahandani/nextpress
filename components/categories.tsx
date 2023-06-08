@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
 
 export default function Categories({ categories }) {
@@ -7,8 +8,11 @@ export default function Categories({ categories }) {
         <RectangleStackIcon className="h-5 w-5 mr-2 " />
         {categories.nodes.length > 0 ? (
           categories.nodes.map((category, index) => (
-            <span key={`category-${index}`} className="mr-4 hover:underline  text-sm">
-              {category.name}
+            <span
+              key={`category-${index}`}
+              className="mr-4 hover:underline  text-sm"
+            >
+              <Link href={`/categories/${category.name}`}>{category.name}</Link>
             </span>
           ))
         ) : (

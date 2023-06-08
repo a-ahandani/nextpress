@@ -7,9 +7,9 @@ import ContentList from "@/components/content-list";
 import Header from "@/components/header";
 import Layout from "@/components/layout";
 import ContentTitle from "@/components/content-title";
-import { getAllTagsWithSlug, getNode } from "@/lib/api";
+import { getAllCategoriesWithSlug, getNode } from "@/lib/api";
 
-export default function Tag({ content, preview }) {
+export default function Category({ content, preview }) {
   const router = useRouter();
 
   if (!router.isFallback && !content?.name) {
@@ -45,7 +45,7 @@ export default function Tag({ content, preview }) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await getNode({ uri: `tag/${params?.slug}` });
+  const data = await getNode({ uri: `category/${params?.slug}` });
   return {
     props: {
       content: data,
@@ -55,9 +55,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allTags = await getAllTagsWithSlug();
+  const allCategories = await getAllCategoriesWithSlug();
   return {
-    paths: allTags.map(({ slug }) => `/tags/${slug}`) || [],
+    paths: allCategories.map(({ slug }) => `/categories/${slug}`) || [],
     fallback: true,
   };
 };
