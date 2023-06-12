@@ -29,10 +29,7 @@ export default function Page({ content, preview }) {
             <article>
               <Head>
                 <title>{`${content.title} | Ahandani.com`}</title>
-                <meta
-                  property="og:image"
-                  content={content.featuredImage?.node.sourceUrl}
-                />
+                <meta property="og:image" content={content.featuredImage} />
               </Head>
               <ContentHeader
                 title={content.title}
