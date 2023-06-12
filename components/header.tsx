@@ -33,7 +33,7 @@ export default function Header() {
         <div className="p-6">
 
           <h2 className=" font-serif text-2xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight ">
-            <Link href="/pages/about" >
+            <Link href="/" >
               AHANDANI.
             </Link>
           </h2>
