@@ -1,4 +1,3 @@
-import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
 import PostTitle from "./content-title";
@@ -23,10 +22,11 @@ export default function ContentHeader({
       </div>
 
       {coverImage && (
-        <div className="mb-8 md:mb-16 sm:mx-0">
+        <div className="mb-8 md:mb-8 sm:mx-0">
           <CoverImage title={title} coverImage={coverImage} />
         </div>
       )}
+
     </>
   );
 }

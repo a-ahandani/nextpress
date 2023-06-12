@@ -1,5 +1,4 @@
 import styles from "./content-body.module.css";
-import Drawer from "@/components/drawer";
 import TableOfContents from '@/components/table-of-contents'
 import { useRef } from "react";
 
@@ -10,10 +9,7 @@ export default function ContentBody({ content }) {
   return (
 
     <div className="font-sans  mx-auto">
-
-      <Drawer >
-        <TableOfContents contentRef={contentRef} />
-      </Drawer>
+      <TableOfContents contentRef={contentRef} />
       <div
         ref={contentRef}
         id="content"
