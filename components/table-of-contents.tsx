@@ -8,7 +8,7 @@ import Link from "next/link";
 const List = ({ list, parent }: { list: NodeType[], parent?: boolean }) => {
     return list?.[0] && <ul className={`${!parent ? "pl-6" : ""}`}>
         {list.map((node) => {
-            return <li className=" border-b mb-1 pb-2 border-accent last:border-none ">
+            return <li key={node.id} className=" border-b mb-1 pb-2 border-accent last:border-none ">
                 <Link href={`#${node.id}`} className=" font-serif text-md flex hover:underline">
                     <MinusSmallIcon className="h-6 w-6 " />
                     {node.content}
