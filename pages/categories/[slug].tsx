@@ -27,10 +27,6 @@ export default function Category({ content, preview }) {
             <article>
               <Head>
                 <title>{`${label} | Ahandani.com`}</title>
-                <meta
-                  property="og:image"
-                  content={content.featuredImage?.node.sourceUrl}
-                />
               </Head>
 
               {content.posts?.nodes?.length > 0 && (

@@ -17,6 +17,7 @@ export default function Page({ content, preview }) {
   if (!router.isFallback && !content?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  console.log(content);
 
   return (
     <Layout preview={preview}>
@@ -30,6 +31,31 @@ export default function Page({ content, preview }) {
               <Head>
                 <title>{`${content.title} | Ahandani.com`}</title>
                 <meta property="og:image" content={content.featuredImage} />
+                <meta name="description" content="Software developer." />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://ahandani.com/" />
+                <meta
+                  property="og:title"
+                  content={`${content.title} | Ahandani.com`}
+                />
+                <meta property="og:description" content="Software developer." />
+                <meta property="og:image" content={content.featuredImage} />
+
+                <meta property="twitter:card" content={content.featuredImage} />
+                <meta property="twitter:url" content="https://ahandani.com/" />
+                <meta
+                  property="twitter:title"
+                  content={`${content.title} | Ahandani.com`}
+                />
+                <meta
+                  property="twitter:description"
+                  content="Software developer."
+                />
+                <meta
+                  property="twitter:image"
+                  content={content.featuredImage}
+                />
               </Head>
               <ContentHeader
                 title={content.title}

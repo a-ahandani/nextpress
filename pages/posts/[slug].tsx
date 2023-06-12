@@ -17,7 +17,7 @@ export default function Post({ post, preview }) {
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />;
   }
-
+  console.log(post);
   return (
     <Layout preview={preview}>
       <Container>
@@ -29,10 +29,33 @@ export default function Post({ post, preview }) {
             <article>
               <Head>
                 <title>{`${post.title} | Ahandani.com`}</title>
+                <title>{`${post.title} | Ahandani.com`}</title>
+                <meta property="og:image" content={post.featuredImage} />
+                <meta name="description" content={post.excerpt} />
+
+                <meta property="og:type" content="website" />
                 <meta
-                  property="og:image"
-                  content={post.featuredImage?.node.mediaItemUrl}
+                  property="og:url"
+                  content={`https://ahandani.com/posts/${post.slug}`}
                 />
+                <meta
+                  property="og:title"
+                  content={`${post.title} | Ahandani.com`}
+                />
+                <meta property="og:description" content={post.excerpt} />
+                <meta property="og:image" content={post.featuredImage} />
+
+                <meta property="twitter:card" content={post.featuredImage} />
+                <meta
+                  property="twitter:url"
+                  content={`https://ahandani.com/posts/${post.slug}`}
+                />
+                <meta
+                  property="twitter:title"
+                  content={`${post.title} | Ahandani.com`}
+                />
+                <meta property="twitter:description" content={post.excerpt} />
+                <meta property="twitter:image" content={post.featuredImage} />
               </Head>
               <ContentHeader
                 title={post.title}
