@@ -21,7 +21,7 @@ export default function Header() {
 
       </div>
       <div className="md:mt-8 md:mb-20 mt-10 mb-12 lg:-ml-10 flex items-center text-center sm:text-left flex-col sm:flex-row">
-        <Link href="/pages/about" >
+        <Link href="/" >
           <Image
             src="/profile.jpeg"
             width={100}
@@ -43,6 +43,18 @@ export default function Header() {
             </Link>
           </h4>
         </div>
+        <ul className="flex font-serif [&>li]:pl-8 [&>li:hover]:underline border-l border-black">
+          <li>
+            <Link title="Projects" href="/categories/Projects">
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link title="About" href="/pages/about">
+              About
+            </Link>
+          </li>
+        </ul>
 
       </div>
     </div>

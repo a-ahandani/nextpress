@@ -13,7 +13,7 @@ module.exports = {
         serif: ["var(--font-ptserif)"],
       },
       colors: {
-        "accent-1": "#dbd9e7",
+        "accent-1": "#fdf4e0",
         "accent-2": "#EAEAEA",
         "accent-7": "#333",
         success: "#0070f3",

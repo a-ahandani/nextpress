@@ -8,6 +8,7 @@ import Header from "@/components/header";
 import Layout from "@/components/layout";
 import ContentTitle from "@/components/content-title";
 import { getAllTagsWithSlug, getNode } from "@/lib/api";
+import { TagIcon } from "@heroicons/react/20/solid";
 
 export default function Tag({ content, preview }) {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function Tag({ content, preview }) {
   if (!router.isFallback && !content?.name) {
     return <ErrorPage statusCode={404} />;
   }
-  const label = `${content?.__typename}: ${content?.name}`;
+  const label = `${content?.name}`;
   return (
     <Layout preview={preview}>
       <Container>
@@ -30,7 +31,8 @@ export default function Tag({ content, preview }) {
               </Head>
 
               {content.posts?.nodes?.length > 0 && (
-                <ContentList label={label} posts={content.posts?.nodes} />
+                <ContentList label={<><TagIcon title={content?.__typename} className="h-16 mr-4 " />
+                  {label}</>} posts={content.posts?.nodes} />
               )}
             </article>
           </>

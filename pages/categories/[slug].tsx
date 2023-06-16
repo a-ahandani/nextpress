@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
+import { RectangleStackIcon } from "@heroicons/react/20/solid";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "@/components/container";
@@ -15,7 +16,7 @@ export default function Category({ content, preview }) {
   if (!router.isFallback && !content?.name) {
     return <ErrorPage statusCode={404} />;
   }
-  const label = `${content?.__typename}: ${content?.name}`;
+  const label = `${content?.name}`;
   return (
     <Layout preview={preview}>
       <Container>
@@ -28,9 +29,9 @@ export default function Category({ content, preview }) {
               <Head>
                 <title>{`${label} | Ahandani.com`}</title>
               </Head>
-
               {content.posts?.nodes?.length > 0 && (
-                <ContentList label={label} posts={content.posts?.nodes} />
+                <ContentList label={<><RectangleStackIcon title={content?.__typename} className="h-16 mr-4 " />
+                  {label}</>} posts={content.posts?.nodes} />
               )}
             </article>
           </>
