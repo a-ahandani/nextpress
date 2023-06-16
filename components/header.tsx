@@ -43,7 +43,7 @@ export default function Header() {
             </Link>
           </h4>
         </div>
-        <ul className="flex font-serif [&>li]:pl-8 [&>li:hover]:underline border-l border-black">
+        <ul className="flex font-serif sm:[&>li]:pl-8 sm:[&>li]:pr-0 [&>li]:px-2 [&>li:hover]:underline sm:border-l border-black">
           <li>
             <Link title="Projects" href="/categories/Projects">
               Projects
