@@ -1,7 +1,7 @@
 export default function ContentTitle({ children }) {
   return (
     <h1
-      className="text-3xl mb-3 leading-snug font-serif "
+      className="font-serif mb-8 text-6xl md:text-6xl font-bold tracking-tighter leading-tight"
       dangerouslySetInnerHTML={{ __html: children }}
     />
   );
